@@ -1,0 +1,12 @@
+2024-11-13 11:47:52,902 - lightrag - INFO - Logger initialized for working directory: /home/yfman/LightRAG/lightrag
+2024-11-13 11:47:52,903 - lightrag - INFO - Load KV llm_response_cache with 0 data
+2024-11-13 11:47:52,904 - lightrag - INFO - Load KV full_docs with 0 data
+2024-11-13 11:47:52,904 - lightrag - INFO - Load KV text_chunks with 0 data
+2024-11-13 11:48:43,101 - lightrag - INFO - Logger initialized for working directory: /home/yfman/LightRAG/lightrag
+2024-11-13 11:48:43,102 - lightrag - INFO - Load KV llm_response_cache with 0 data
+2024-11-13 11:48:43,103 - lightrag - INFO - Load KV full_docs with 0 data
+2024-11-13 11:48:43,103 - lightrag - INFO - Load KV text_chunks with 0 data
+2024-11-13 11:48:43,107 - lightrag - INFO - [New Docs] inserting 1 docs
+2024-11-13 11:48:44,520 - lightrag - INFO - [New Chunks] inserting 42 chunks
+2024-11-13 11:48:44,520 - lightrag - INFO - Inserting 42 vectors to chunks
+2024-11-13 11:48:44,523 - lightrag - INFO - Writing graph with 0 nodes, 0 edges

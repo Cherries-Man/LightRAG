@@ -105,7 +105,9 @@ class LightRAG:
 
     # LLM
     llm_model_func: callable = gpt_4o_mini_complete  # hf_model_complete#
-    llm_model_name: str = "meta-llama/Llama-3.2-1B-Instruct"  #'meta-llama/Llama-3.2-1B'#'google/gemma-2-2b-it'
+    llm_model_name: str = (
+        "meta-llama/Llama-3.2-1B-Instruct"  #'meta-llama/Llama-3.2-1B'#'google/gemma-2-2b-it'
+    )
     llm_model_max_token_size: int = 32768
     llm_model_max_async: int = 16
     llm_model_kwargs: dict = field(default_factory=dict)
@@ -226,7 +228,10 @@ class LightRAG:
         loop = always_get_an_event_loop()
         return loop.run_until_complete(self.ainsert(string_or_strings))
 
+    def sync_insert(self, string_or_strings): ...
+
     async def ainsert(self, string_or_strings):
+        update_storage = False
         try:
             if isinstance(string_or_strings, str):
                 string_or_strings = [string_or_strings]
@@ -240,6 +245,7 @@ class LightRAG:
             if not len(new_docs):
                 logger.warning("All docs are already in the storage")
                 return
+            update_storage = True
             logger.info(f"[New Docs] inserting {len(new_docs)} docs")
 
             inserting_chunks = {}
@@ -286,7 +292,8 @@ class LightRAG:
             await self.full_docs.upsert(new_docs)
             await self.text_chunks.upsert(inserting_chunks)
         finally:
-            await self._insert_done()
+            if update_storage:
+                await self._insert_done()
 
     async def _insert_done(self):
         tasks = []

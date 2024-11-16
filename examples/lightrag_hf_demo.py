@@ -13,7 +13,8 @@ if not os.path.exists(WORKING_DIR):
 rag = LightRAG(
     working_dir=WORKING_DIR,
     llm_model_func=hf_model_complete,
-    llm_model_name="meta-llama/Llama-3.1-8B-Instruct",
+    # llm_model_name="meta-llama/Llama-3.1-8B-Instruct",
+    llm_model_name="/data1/yfman/hf_models/Llama-3.1-8B-Instruct",
     embedding_func=EmbeddingFunc(
         embedding_dim=384,
         max_token_size=5000,
@@ -30,7 +31,8 @@ rag = LightRAG(
 )
 
 
-with open("./book.txt", "r", encoding="utf-8") as f:
+# with open("./book.txt", "r", encoding="utf-8") as f:
+with open("/home/yfman/LightRAG/book.txt", "r", encoding="utf-8") as f:
     rag.insert(f.read())
 
 # Perform naive search
